@@ -6,7 +6,7 @@
 /*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 06:25:03 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/30 19:37:27 by Tbouder          ###   ########.fr       */
+/*   Updated: 2016/01/30 22:50:03 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_numbers_left(int g_size, int *grid, int r, int k)
 		while (i < g_size * g_size)
 		{
 			y = i + 1;
-			if (y % g_size != 00 && grid[i] == 0 && grid[y] != 0)
+			if (y % g_size != 0 && grid[i] == 0 && grid[y] != 0)
 			{
 				grid[i] = grid[y];
 				grid[y] = 0;

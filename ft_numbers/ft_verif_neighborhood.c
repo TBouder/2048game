@@ -6,11 +6,13 @@
 /*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 20:27:26 by Tbouder           #+#    #+#             */
-/*   Updated: 2016/01/30 20:30:43 by Tbouder          ###   ########.fr       */
+/*   Updated: 2016/01/30 23:38:06 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
+
+#include <stdio.h>
 
 int		ft_verif_neighborhood(int g_size, int *grid)
 {
@@ -21,8 +23,15 @@ int		ft_verif_neighborhood(int g_size, int *grid)
 	{
 		if (grid[i] == 0)
 			return (1);
-		else if (grid[i] == grid[i + 1] || grid[i] == grid[i - 1]
-			|| grid[i] == grid[i - g_size] || grid[i] == grid[i + g_size])
+
+		if (i % g_size == g_size - 1)
+		{
+			if (grid[i] == grid[i + g_size])
+				return (1);
+		}
+		else if (grid[i] == grid[i + 1])
+			return (1);
+		else if (grid[i] == grid[i + g_size])
 			return (1);
 		i++;
 	}
