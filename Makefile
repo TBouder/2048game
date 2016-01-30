@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+         #
+#    By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/30 01:23:49 by tbouder           #+#    #+#              #
-#    Updated: 2016/01/30 08:59:20 by tbouder          ###   ########.fr        #
+#    Updated: 2016/01/30 20:45:18 by Tbouder          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,23 +15,27 @@ NAME 		= 	game_2048
 CC			= 	gcc
 CFLAGS		= 	-Wall -Werror -Wextra
 
-SRC 		= 	main.c ft_print/ft_print_grid_launcher.c \
+SRC 		= 	main.c ft_print/ft_print_grid_launch.c \
 				ft_print/ft_print_cases.c ft_print/ft_print_frame.c \
 				ft_print/ft_print_grid.c ft_print/ft_print_grid_small.c \
-				ft_top/ft_move_top.c ft_top/ft_combine_numbers_top.c \
-				ft_down/ft_move_down.c ft_down/ft_combine_numbers_down.c \
-				ft_left/ft_move_left.c ft_left/ft_combine_numbers_left.c \
-				ft_right/ft_move_right.c ft_right/ft_combine_numbers_right.c
+				ft_print/ft_print_colors.c \
+				ft_moves/ft_numbers_top.c ft_moves/ft_numbers_right.c \
+				ft_moves/ft_numbers_left.c ft_moves/ft_numbers_down.c \
+				ft_numbers/ft_starting_grid.c \
+				ft_numbers/ft_add_number_per_turn.c \
+				ft_numbers/ft_verif_neighborhood.c
 
 LIB			=	libft/libft.a -lncurses
 
-OBJ			=	main.o ft_print_grid_launcher.o \
+OBJ			=	main.o ft_print_grid_launch.o \
 				ft_print_cases.o ft_print_frame.o \
 				ft_print_grid.o ft_print_grid_small.o \
-				ft_move_top.o ft_combine_numbers_top.o \
-				ft_move_down.o ft_combine_numbers_down.o \
-				ft_move_left.o ft_combine_numbers_left.o \
-				ft_move_right.o ft_combine_numbers_right.o
+				ft_numbers_top.o \
+				ft_numbers_right.o \
+				ft_numbers_left.o \
+				ft_numbers_down.o \
+				ft_print_colors.o ft_starting_grid.o ft_add_number_per_turn.o \
+				ft_verif_neighborhood.o
 
 HEADER 		=	libft/libft.h ft_game.h
 
@@ -39,19 +43,19 @@ all: $(NAME)
 
 .SILENT : $(NAME)
 $(NAME):
-	# cd libft/ && $(MAKE)
+	cd libft/ && $(MAKE)
 	$(CC) $(CFLAGS) -c $(HEADER) $(SRC)
 	$(CC) -o $(NAME) $(OBJ) $(LIB)
 
 .SILENT : clean
 clean:
-	# cd libft/ && $(MAKE) clean
+	cd libft/ && $(MAKE) clean
 	rm -f $(OBJ)
 	rm -f *.gch
 
 .SILENT : fclean
 fclean: clean
-	# cd libft/ && $(MAKE) fclean
+	cd libft/ && $(MAKE) fclean
 	rm -f $(NAME)
 
 re: fclean all

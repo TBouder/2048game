@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 01:21:32 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/30 06:38:28 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/01/30 20:31:02 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,27 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-void		ft_print_grid_launcher(int g_size, int *grid, int max_x, int max_y);
+enum e_const
+{
+	WIN_VALUE = 2048
+};
+
+void		ft_print_grid_launch(int g_size, int *grid, int max_x, int max_y);
 void		ft_print_cases(int g_size, int max_x, int max_y);
 void		ft_print_frame(int max_x, int max_y);
 void		ft_print_grid(int g_size, int *grid, int max_x, int max_y);
 void		ft_print_grid_small(int g_size, int *grid);
 
-void		ft_combine_numbers_top(int g_size, int *grid);
-void		ft_move_top(int *grid, int g_size);
+int			ft_numbers_top(int g_size, int *grid, int r, int k);
+int			ft_numbers_down(int g_size, int *grid, int r, int k);
+int			ft_numbers_left(int g_size, int *grid, int r, int k);
+int			ft_numbers_right(int g_size, int *grid, int r, int k);
 
-void		ft_combine_numbers_down(int g_size, int *grid);
-void		ft_move_down(int *grid, int g_size);
+void		ft_starting_grid(int g_size, int *grid);
+void		ft_add_number_per_turn(int g_size, int *grid);
 
-void		ft_combine_numbers_left(int g_size, int *grid);
-void		ft_move_left(int *grid, int g_size);
+void		ft_print_colors(int x, int y, int nb);
 
-void		ft_combine_numbers_right(int g_size, int *grid);
-void		ft_move_right(int *grid, int g_size);
+int			ft_verif_neighborhood(int g_size, int *grid);
 
 #endif

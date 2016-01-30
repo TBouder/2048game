@@ -3,97 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 21:18:09 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/30 08:59:30 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/01/30 20:43:21 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_game.h"
 
-int		*ft_grid(int g_size, int *grid)
+int		*ft_size_grid(int g_size, int *grid)
 {
 	if (g_size == 4)
 		grid = ft_nbrnew(16);
 	if (g_size == 5)
-		grid = ft_nbrnew(20);
+		grid = ft_nbrnew(25);
 	return (grid);
 }
 
-void	ft_starting_grid(int g_size, int *grid)
+int		ft_key_select(int *grid)
 {
-	time_t	t;   
-	int		i;
-	int		j;
-	int		temp;
+	int		key;
+	int		r;
 
-	j = 0;
-	temp = -1;
-	srand((unsigned) time(&t));
-	while (j < 2)
+	keypad(stdscr, TRUE);
+	r = 0;
+	key = getch();
+	if (key == 27)
+		return (1);
+	key == KEY_UP ? r = ft_numbers_top(4, grid, 0, 4) : 0;
+	key == KEY_DOWN ? r = ft_numbers_down(4, grid, 0, 4) : 0;
+	key == KEY_LEFT ? r = ft_numbers_left(4, grid, 0, 4) : 0;
+	key == KEY_RIGHT ? r = ft_numbers_right(4, grid, 0, 4) : 0;
+	if (r)
 	{
-		while ((i = rand() % (g_size * g_size)) == temp)
-			;
-		printf("%d\n", i); //
-		grid[i] = rand() % 2 == 0 ? 2 : 4;
-		temp = i;
-		j++; 
+		ft_add_number_per_turn(4, grid);
+		if (ft_verif_neighborhood(4, grid) == 0)
+			return (2);
 	}
+	return (0);
 }
 
-void	ft_add_number_per_turn(int g_size, int *grid)
+int		ft_close(int g_size, int *grid, int id)
 {
-	time_t	t;   
-	int		i;
-
-	srand((unsigned) time(&t));
-	while (grid[(i = rand() % (g_size * g_size))] != 0)
-		;
-	grid[i] = rand() % 2 == 0 ? 2 : 4;
+	if (id == 1)
+		//TOUCHE ESCAPE
+	if (id == 2)
+		//PLUS DE POSSIBILITE DE MOVE
+	if (id == 3)
+		//VICTORY
 }
 
 int main()
 {
 	int		*grid;
-	int		i;
 	int		max_x;
 	int		max_y;
-	int		key;
+	int		end;
 
 	max_x = 0;
 	max_y = 0;
-	i = 0;
-	
-	grid = ft_grid(4, NULL);
+	grid = ft_size_grid(4, NULL);
 	ft_starting_grid(4, grid);
 	while (1)
 	{
 		clear();
-		initscr();			/* Start curses mode 		  */
+		initscr();
 		noecho();
 		getmaxyx(stdscr, max_y, max_x);
-		ft_print_grid_launcher(4, grid, max_x, max_y);
-		refresh();			/* Print it on to the real screen */
-		keypad(stdscr, TRUE);
-		key = getch();
-		if (key == KEY_UP)
-			ft_combine_numbers_top(4, grid);
-		if (key == KEY_DOWN)
-			ft_combine_numbers_down(4, grid);
-		if (key == KEY_LEFT)
-			ft_combine_numbers_left(4, grid);
-		if (key == KEY_RIGHT)
-			ft_combine_numbers_right(4, grid);
-		if (key == 27)
+		ft_print_grid_launch(4, grid, max_x, max_y);
+		if ((end = ft_key_select(grid)) != 0)
 		{
+			ft_close(g_size, grid, end);
+			endwin();
 			return (0);
 		}
-		ft_add_number_per_turn(4, grid);
-
-
-		endwin();			/* End curses mode		  */
+		refresh();
+		endwin();
 	}
-
 	return 0;
 }

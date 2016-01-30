@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_down.c                                     :+:      :+:    :+:   */
+/*   ft_starting_grid.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/30 06:24:10 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/30 06:40:35 by tbouder          ###   ########.fr       */
+/*   Created: 2016/01/30 12:36:37 by Tbouder           #+#    #+#             */
+/*   Updated: 2016/01/30 12:39:44 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
 
-void	ft_move_down(int *grid, int g_size)
+void	ft_starting_grid(int g_size, int *grid)
 {
+	time_t	t;   
 	int		i;
 	int		j;
+	int		temp;
 
-	i = g_size * g_size;
 	j = 0;
-	while (i - g_size >= 0 && j < g_size)
+	temp = -1;
+	srand((unsigned) time(&t));
+	while (j < 2)
 	{
-		if (grid[i] == 0 && grid[i - g_size] != 0)
-		{
-			grid[i] = grid[i - g_size];
-			grid[i - g_size] = 0;
-		}
-		i--;
-		if (i - g_size == -1)
-		{
-			i = g_size * g_size;
-			j++;
-		}
-	}	
+		while ((i = rand() % (g_size * g_size)) == temp)
+			;
+		printf("%d\n", i); //
+		grid[i] = rand() % 2 == 0 ? 2 : 4;
+		temp = i;
+		j++; 
+	}
 }

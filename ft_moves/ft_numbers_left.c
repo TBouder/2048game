@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_combine_numbers_top.c                           :+:      :+:    :+:   */
+/*   ft_numbers_left.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 06:25:03 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/30 08:15:50 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/01/30 19:37:27 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
 
-void	ft_combine_numbers_top(int g_size, int *grid)
+int		ft_numbers_left(int g_size, int *grid, int r, int k)
 {
 	int		i;
-	int		j;
+	int		y;
 
-	i = 0;
-	j = g_size;
-	while (i + j < g_size * g_size)
+	while (k--)
 	{
-		while (j <= g_size * g_size)
+		i = 0;
+		while (i < g_size * g_size)
 		{
-			if (grid[i + j] == grid[i])
+			y = i + 1;
+			if (y % g_size != 00 && grid[i] == 0 && grid[y] != 0)
 			{
-				grid[i] += grid[i + j];
-				grid[i + j] = 0;
+				grid[i] = grid[y];
+				grid[y] = 0;
+				r = 1;
 			}
-			else if (grid[i + j] != 0 && grid[i + j] != grid[i])
-				j = g_size * g_size;
-			j += g_size;
+			else if (y % g_size != 0 && grid[i] == grid[y] && grid[i] != 0)
+			{
+				grid[i] += grid[y];
+				grid[y] = 0;
+				r = 1;
+			}
+			i++;
 		}
-		j = g_size;
-		i++;
 	}
-	ft_move_top(grid, g_size);
+	return (r);
 }

@@ -1,43 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_cases.c                                   :+:      :+:    :+:   */
+/*   ft_add_number_per_turn.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/30 01:36:28 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/30 14:26:34 by Tbouder          ###   ########.fr       */
+/*   Created: 2016/01/30 19:40:32 by Tbouder           #+#    #+#             */
+/*   Updated: 2016/01/30 19:40:50 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
 
-void		ft_print_cases(int g_size, int max_x, int max_y)
+void	ft_add_number_per_turn(int g_size, int *grid)
 {
+	time_t	t;   
 	int		i;
-	int		x;
-	int		y;
 
-	i = 1;
-	x = (max_x/g_size);
-	y = 0;
-	while (i < g_size)
-	{
-		while (++y < max_y)
-			mvprintw(y, x, "|");
-		y = 0;
-		x += (max_x/g_size);
-		i++;
-	}
-	i = 1;
-	x = 0;
-	y = (max_y/g_size);
-	while (i < g_size )
-	{
-		while (++x < max_x)
-			mvprintw(y, x, "-");
-		x = 0;
-		y += (max_y/g_size);
-		i++;
-	}
+	srand((unsigned) time(&t));
+	while (grid[(i = rand() % (g_size * g_size))] != 0)
+		;
+	grid[i] = rand() % 2 == 0 ? 2 : 4;
 }
