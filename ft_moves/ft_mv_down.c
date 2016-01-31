@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numbers_down.c                                  :+:      :+:    :+:   */
+/*   ft_mv_down.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/30 06:25:03 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/31 13:21:59 by Tbouder          ###   ########.fr       */
+/*   Created: 2016/01/31 12:40:50 by Tbouder           #+#    #+#             */
+/*   Updated: 2016/01/31 12:43:42 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
 
-int		ft_numbers_down(int g_size, int *grid, int r)
+int		ft_mv_down(int g_size, int *grid, int r)
 {
 	int		i;
 	int		y;
 
-	r = ft_mv_down(g_size, grid, r);
-	r = ft_mv_down(g_size, grid, r);
-	i = g_size * g_size;
-	while (i >= 0)
+	i = 0;
+	while (i < g_size * g_size)
 	{
-		y = i - g_size;
-		if (grid[i] == grid[y] && grid[i] != 0)
+		y = i + g_size;
+		if (y >= g_size * g_size)
+			return (r);
+		if (grid[i] != 0 && grid[y] == 0)
 		{
-			grid[i] += grid[y];
-			grid[y] = 0;
+			grid[y] = grid[i];
+			grid[i] = 0;
 			r = 1;
 		}
-		i--;
+		i++;
 	}
-	r = ft_mv_down(g_size, grid, r);
 	return (r);
 }

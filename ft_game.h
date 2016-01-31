@@ -6,7 +6,7 @@
 /*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 01:21:32 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/31 00:15:51 by Tbouder          ###   ########.fr       */
+/*   Updated: 2016/01/31 13:23:00 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 enum e_const
 {
-	WIN_VALUE = 2048
+	WIN_VALUE = 216 //
 };
 
 void		ft_print_grid_launch(int g_size, int *grid, int max_x, int max_y);
@@ -29,10 +29,15 @@ void		ft_print_frame(int max_x, int max_y);
 void		ft_print_grid(int g_size, int *grid, int max_x, int max_y);
 void		ft_print_grid_small(int g_size, int *grid);
 
-int			ft_numbers_top(int g_size, int *grid, int r, int k);
-int			ft_numbers_down(int g_size, int *grid, int r, int k);
-int			ft_numbers_left(int g_size, int *grid, int r, int k);
-int			ft_numbers_right(int g_size, int *grid, int r, int k);
+int			ft_numbers_top(int g_size, int *grid, int r);
+int			ft_numbers_down(int g_size, int *grid, int r);
+int			ft_numbers_left(int g_size, int *grid, int r);
+int			ft_numbers_right(int g_size, int *grid, int r);
+
+int			ft_mv_top(int g_size, int *grid, int r);
+int			ft_mv_down(int g_size, int *grid, int r);
+int			ft_mv_left(int g_size, int *grid, int r);
+int			ft_mv_right(int g_size, int *grid, int r);
 
 void		ft_starting_grid(int g_size, int *grid);
 void		ft_add_number_per_turn(int g_size, int *grid);

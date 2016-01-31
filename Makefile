@@ -6,7 +6,7 @@
 #    By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/30 01:23:49 by tbouder           #+#    #+#              #
-#    Updated: 2016/01/30 20:45:18 by Tbouder          ###   ########.fr        #
+#    Updated: 2016/01/31 13:00:46 by Tbouder          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,12 @@ SRC 		= 	main.c ft_print/ft_print_grid_launch.c \
 				ft_print/ft_print_cases.c ft_print/ft_print_frame.c \
 				ft_print/ft_print_grid.c ft_print/ft_print_grid_small.c \
 				ft_print/ft_print_colors.c \
+				\
 				ft_moves/ft_numbers_top.c ft_moves/ft_numbers_right.c \
 				ft_moves/ft_numbers_left.c ft_moves/ft_numbers_down.c \
+				ft_moves/ft_mv_top.c ft_moves/ft_mv_down.c \
+				ft_moves/ft_mv_left.c ft_moves/ft_mv_right.c \
+				\
 				ft_numbers/ft_starting_grid.c \
 				ft_numbers/ft_add_number_per_turn.c \
 				ft_numbers/ft_verif_neighborhood.c
@@ -35,7 +39,8 @@ OBJ			=	main.o ft_print_grid_launch.o \
 				ft_numbers_left.o \
 				ft_numbers_down.o \
 				ft_print_colors.o ft_starting_grid.o ft_add_number_per_turn.o \
-				ft_verif_neighborhood.o
+				ft_verif_neighborhood.o \
+				ft_mv_top.o ft_mv_down.o ft_mv_left.o ft_mv_right.o \
 
 HEADER 		=	libft/libft.h ft_game.h
 

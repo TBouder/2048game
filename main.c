@@ -6,7 +6,7 @@
 /*   By: Tbouder <Tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 21:18:09 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/31 00:14:35 by Tbouder          ###   ########.fr       */
+/*   Updated: 2016/01/31 12:50:55 by Tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int		ft_key_select(int g_size, int *grid)
 	key = getch();
 	if (key == 27)
 		return (1);
-	key == KEY_UP ? r = ft_numbers_top(g_size, grid, 0, g_size) : 0;
-	key == KEY_DOWN ? r = ft_numbers_down(g_size, grid, 0, g_size) : 0;
-	key == KEY_LEFT ? r = ft_numbers_left(g_size, grid, 0, g_size) : 0;
-	key == KEY_RIGHT ? r = ft_numbers_right(g_size, grid, 0, g_size) : 0;
+	key == KEY_UP ? r = ft_numbers_top(g_size, grid, 0) : 0;
+	key == KEY_DOWN ? r = ft_numbers_down(g_size, grid, 0) : 0;
+	key == KEY_LEFT ? r = ft_numbers_left(g_size, grid, 0) : 0;
+	key == KEY_RIGHT ? r = ft_numbers_right(g_size, grid, 0) : 0;
 	if (ft_nbrlargest(grid, g_size * g_size) == WIN_VALUE)
 		return (3);
 	if (r)
