@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/30 02:56:00 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/30 03:50:49 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/01/31 19:52:25 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,22 @@ void		ft_print_grid_small(int g_size, int *grid)
 	int		k;
 
 	i = 1;
-	j = 0;
 	k = ft_nbrlen(ft_nbrlargest(grid, g_size * g_size));
 	while ((i - 1) < (g_size * g_size))
 	{
+		j = 0;
 		if (grid[i - 1] != 0)
+		{
 			printw(" %d ", grid[i - 1]);
+			while (j++ < k - ft_nbrlen(grid[i - 1]))
+				printw(" ");
+		}
 		else
 		{
-			printw(" ");
-			while (j++ < k)
+			while (j++ < k + 2)
 				printw(" ");
-			printw(" ");
 		}
-
-		if (i % g_size == 0 && i != 0)
-			printw("\n");
-		else
-			printw("|");
-		j = 0;
+		(i % g_size == 0 && i != 0) ? printw("\n") : printw("|");
 		i++;
 	}
 }

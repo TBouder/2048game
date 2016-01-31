@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_verif_neighborhood.c                            :+:      :+:    :+:   */
+/*   ft_check_win_value.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/30 20:27:26 by Tbouder           #+#    #+#             */
-/*   Updated: 2016/01/31 17:50:42 by tbouder          ###   ########.fr       */
+/*   Created: 2016/01/31 22:39:15 by tbouder           #+#    #+#             */
+/*   Updated: 2016/01/31 22:39:25 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_game.h"
+#include "ft_game.h"
 
-#include <stdio.h>
-
-int		ft_verif_neighborhood(int g_size, int *grid)
+int		ft_check_win_value(int nb, int r)
 {
-	int		i;
-
-	i = 0;
-	while (i < g_size * g_size)
+	if (nb == 2)
 	{
-		if (grid[i] == 0)
-			return (1);
-		if (i % g_size == g_size - 1)
-		{
-			if (grid[i] == grid[i + g_size])
-				return (1);
-		}
-		else if (grid[i] == grid[i + 1])
-			return (1);
-		else if (grid[i] == grid[i + g_size])
-			return (1);
-		i++;
+		r = 1;
+		return (r);
 	}
-	return (0);
+	if (nb % 2 == 0)
+		r = ft_check_win_value(nb / 2, r);
+	return (r);
 }

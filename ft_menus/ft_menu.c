@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_verif_neighborhood.c                            :+:      :+:    :+:   */
+/*   ft_menu.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/30 20:27:26 by Tbouder           #+#    #+#             */
-/*   Updated: 2016/01/31 17:50:42 by tbouder          ###   ########.fr       */
+/*   Created: 2016/01/31 01:27:42 by chray             #+#    #+#             */
+/*   Updated: 2016/01/31 21:00:55 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
 
-#include <stdio.h>
-
-int		ft_verif_neighborhood(int g_size, int *grid)
+char	ft_menu(char c)
 {
-	int		i;
+	int		max_x;
+	int		max_y;
 
-	i = 0;
-	while (i < g_size * g_size)
+	max_x = 0;
+	max_y = 0;
+	while (1)
 	{
-		if (grid[i] == 0)
-			return (1);
-		if (i % g_size == g_size - 1)
+		clear();
+		initscr();
+		noecho();
+		getmaxyx(stdscr, max_y, max_x);
+		ft_print_menu(max_x, max_y);
+		keypad(stdscr, TRUE);
+		c = getch();
+		if ((c >= '2' && c <= '9') || c == '0' || c == 27)
 		{
-			if (grid[i] == grid[i + g_size])
-				return (1);
+			endwin();
+			clear();
+			return (c);
 		}
-		else if (grid[i] == grid[i + 1])
-			return (1);
-		else if (grid[i] == grid[i + g_size])
-			return (1);
-		i++;
+		refresh();
+		endwin();
 	}
-	return (0);
 }

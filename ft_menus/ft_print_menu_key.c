@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_verif_neighborhood.c                            :+:      :+:    :+:   */
+/*   ft_print_menu_key.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/30 20:27:26 by Tbouder           #+#    #+#             */
-/*   Updated: 2016/01/31 17:50:42 by tbouder          ###   ########.fr       */
+/*   Created: 2016/01/31 20:39:40 by tbouder           #+#    #+#             */
+/*   Updated: 2016/01/31 21:35:13 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
 
-#include <stdio.h>
-
-int		ft_verif_neighborhood(int g_size, int *grid)
+void	ft_print_menu_key(int max_x, int max_y)
 {
-	int		i;
-
-	i = 0;
-	while (i < g_size * g_size)
+	if (max_y >= 30)
 	{
-		if (grid[i] == 0)
-			return (1);
-		if (i % g_size == g_size - 1)
-		{
-			if (grid[i] == grid[i + g_size])
-				return (1);
-		}
-		else if (grid[i] == grid[i + 1])
-			return (1);
-		else if (grid[i] == grid[i + g_size])
-			return (1);
-		i++;
+		ft_print_name(max_x, max_y);
+		mvprintw(21 + 3, (max_x / 2) - 10, "Play with WASD ==> 1");
+		mvprintw(21 + 5, (max_x / 2) - 12, "Play with arrows ==> 2");
+		mvprintw(21 + 7, (max_x / 2) - 5, "Quit ==> 0");
 	}
-	return (0);
+	else
+	{
+		mvprintw(1, 0, "1 WASD | 2 arrows ==> 1 ~ 2");
+		mvprintw(2, 0, "Quit ==> 0");
+	}
 }

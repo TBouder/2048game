@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_verif_neighborhood.c                            :+:      :+:    :+:   */
+/*   ft_print_colors_two.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/30 20:27:26 by Tbouder           #+#    #+#             */
-/*   Updated: 2016/01/31 17:50:42 by tbouder          ###   ########.fr       */
+/*   Created: 2016/01/31 18:12:41 by tbouder           #+#    #+#             */
+/*   Updated: 2016/01/31 18:13:21 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
 
-#include <stdio.h>
-
-int		ft_verif_neighborhood(int g_size, int *grid)
+void		ft_print_colors_two(int x, int y, int nb)
 {
-	int		i;
-
-	i = 0;
-	while (i < g_size * g_size)
-	{
-		if (grid[i] == 0)
-			return (1);
-		if (i % g_size == g_size - 1)
-		{
-			if (grid[i] == grid[i + g_size])
-				return (1);
-		}
-		else if (grid[i] == grid[i + 1])
-			return (1);
-		else if (grid[i] == grid[i + g_size])
-			return (1);
-		i++;
-	}
-	return (0);
+	if (nb == 128)
+		attron(COLOR_PAIR(2));
+	else if (nb == 256)
+		attron(COLOR_PAIR(3));
+	else if (nb == 512)
+		attron(COLOR_PAIR(4));
+	else if (nb == 1024)
+		attron(COLOR_PAIR(5));
+	else if (nb == 2048)
+		attron(COLOR_PAIR(6));
+	mvprintw(y, x, "%d", nb);
+	attron(COLOR_PAIR(1));
 }

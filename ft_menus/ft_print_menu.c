@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_verif_neighborhood.c                            :+:      :+:    :+:   */
+/*   ft_print_menu.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/30 20:27:26 by Tbouder           #+#    #+#             */
-/*   Updated: 2016/01/31 17:50:42 by tbouder          ###   ########.fr       */
+/*   Created: 2016/01/31 20:35:42 by tbouder           #+#    #+#             */
+/*   Updated: 2016/01/31 22:05:06 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
 
-#include <stdio.h>
-
-int		ft_verif_neighborhood(int g_size, int *grid)
+void	ft_print_menu(int max_x, int max_y)
 {
-	int		i;
-
-	i = 0;
-	while (i < g_size * g_size)
+	if (max_y >= 28)
 	{
-		if (grid[i] == 0)
-			return (1);
-		if (i % g_size == g_size - 1)
-		{
-			if (grid[i] == grid[i + g_size])
-				return (1);
-		}
-		else if (grid[i] == grid[i + 1])
-			return (1);
-		else if (grid[i] == grid[i + g_size])
-			return (1);
-		i++;
+		ft_print_name(max_x, max_y);
+		mvprintw(21 + 3, (max_x / 2) - 15, "Size between 2 and 9 ==> 2 ~ 9");
+		mvprintw(21 + 5, (max_x / 2) - 5, "Quit ==> 0");
 	}
-	return (0);
+	else
+	{
+		mvprintw(1, 0, "Grid size ==> 2 ~ 9");
+		mvprintw(2, 0, "Quit ==> 0");
+	}
 }

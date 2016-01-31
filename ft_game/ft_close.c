@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_cases.c                                   :+:      :+:    :+:   */
+/*   ft_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/30 01:36:28 by tbouder           #+#    #+#             */
-/*   Updated: 2016/01/31 18:03:02 by tbouder          ###   ########.fr       */
+/*   Created: 2016/01/31 21:02:55 by tbouder           #+#    #+#             */
+/*   Updated: 2016/01/31 21:33:34 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_game.h"
 
-void		ft_print_cases(int g_size, int max_x, int max_y)
+int		ft_close(int id)
 {
-	int		i;
 	int		x;
 	int		y;
 
-	i = 1;
-	x = (max_x / g_size);
-	while (i < g_size)
+	x = 0;
+	y = 0;
+	getmaxyx(stdscr, y, x);
+	clear();
+	refresh();
+	if (x > 40)
 	{
-		y = 0;
-		while (++y < max_y)
-			mvprintw(y, x, "|");
-		x += (max_x / g_size);
-		i++;
+		id == 1 ? mvprintw(y / 2, 0, "Thank you for playing ") : 0;
+		id == 2 ? mvprintw(y / 2, (x / 2) - 19,
+			"End of Game : No action available") : 0;
 	}
-	i = 1;
-	y = (max_y / g_size);
-	while (i < g_size)
+	else
 	{
-		x = 0;
-		while (++x < max_x)
-			mvprintw(y, x, "-");
-		y += (max_y / g_size);
-		i++;
+		id == 1 ? mvprintw(y / 2, (x / 2) - 5, " Thank you") : 0;
+		id == 2 ? mvprintw(y / 2, (x / 2) - 6, " End of Game") : 0;
 	}
+	mvprintw(y / 2 + 1, (x / 2) - 12, "~ Press a key to leave ~");
+	getch();
+	return (0);
 }
