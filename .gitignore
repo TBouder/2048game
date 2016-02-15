@@ -1,8 +1,44 @@
-*/.DS_Store
-.DS_Store
-a.out
-*.gch
-*.pdf/
-*.o
-"Icon\r"
-README.md
+# Object files
+		*.o
+		*.ko
+		*.obj
+		*.elf
+
+		# Precompiled Headers
+		*.gch
+		*.pch
+
+		# Libraries
+		*.lib
+		*.a
+		*.la
+		*.lo
+
+		# Shared objects (inc. Windows DLLs)
+		*.dll
+		*.so
+		*.so.*
+		*.dylib
+
+		# Executables
+		*.exe
+		*.out
+		*.app
+		*.i*86
+		*.x86_64
+		*.hex
+		test
+		pretty_test
+
+		# Debug files
+		*.dSYM/
+
+		# System files
+		.DS_Store
+		\#*#
+		.#*
+		._*
+
+		# Others
+		Icon
+		README.md
