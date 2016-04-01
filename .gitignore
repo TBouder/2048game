@@ -1,44 +1,45 @@
 # Object files
-		*.o
-		*.ko
-		*.obj
-		*.elf
+*.o
+*.ko
+*.obj
+*.elf
 
-		# Precompiled Headers
-		*.gch
-		*.pch
+# Precompiled Headers
+*.gch
+*.pch
 
-		# Libraries
-		*.lib
-		*.a
-		*.la
-		*.lo
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
 
-		# Shared objects (inc. Windows DLLs)
-		*.dll
-		*.so
-		*.so.*
-		*.dylib
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
 
-		# Executables
-		*.exe
-		*.out
-		*.app
-		*.i*86
-		*.x86_64
-		*.hex
-		test
-		pretty_test
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+test
+pretty_test
 
-		# Debug files
-		*.dSYM/
+# Debug files
+*.dSYM/
 
-		# System files
-		.DS_Store
-		\#*#
-		.#*
-		._*
+# System files
+.DS_Store
+\#*#
+.#*
+._*
 
-		# Others
-		Icon
-		README.md
+# Others
+Icon
+README.md
+*.out
