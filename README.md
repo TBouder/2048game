@@ -6,7 +6,7 @@
 
 >The game is won when a tile with a value of 2048 appears on the board, hence the name of the game. After reaching the 2048 tile, players can continue to play to reach higher scores. When the player has no legal moves (there are no empty spaces and no adjacent tiles with the same value), the game ends.
 
-Bonus :<br/>
+Bonus :  
 - [x] Menu
 - [x] Resizable window
 - [x] Colors
